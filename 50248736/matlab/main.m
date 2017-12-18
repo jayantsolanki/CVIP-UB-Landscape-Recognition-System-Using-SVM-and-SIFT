@@ -1,10 +1,10 @@
-img=imread('..\data\art_gallery\sun_akdxvnqeibphzzfu.jpg');
-imgray=rgb2gray(img);
-%script to use vlfeat
-run('vlfeat-0.9.20-bin\vlfeat-0.9.20\toolbox\vl_setup.m');
+% img=imread('..\data\art_gallery\sun_akdxvnqeibphzzfu.jpg');
+% imgray=rgb2gray(img);
+% %script to use vlfeat
+% run('vlfeat-0.9.20-bin\vlfeat-0.9.20\toolbox\vl_setup.m');
 
- points = detectSURFFeatures(imgray);
- [features, valid_points] = extractFeatures(imgray, points);
+%  points = detectSURFFeatures(imgray);
+%  [features, valid_points] = extractFeatures(imgray, points);
 
 %[locations, SIFT_features] = vl_dsift(single(imgray));
 %[locations1, SIFT_features1] = vl_phow(single(img),'color','hsv');

@@ -10,8 +10,8 @@ function [dictionary] = getSIFTandDictionary1(imPaths)
  % filterBank  = createFilterBank();
    % filterResponses=cell(1,numel(length(imPaths)));
    % filterResponses=[];
-    a=120;
-    K=180;
+    a=150;
+    K=200;
     sampledData=[];
     % TODO Implement your code here
    for i=1:length(imPaths)
