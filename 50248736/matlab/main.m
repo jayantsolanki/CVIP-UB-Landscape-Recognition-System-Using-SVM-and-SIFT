@@ -13,17 +13,18 @@ run('vlfeat-0.9.20-bin\vlfeat-0.9.20\toolbox\vl_setup.m');
 %getSIFTandDictionary1
 computeDictionary();
 
+disp("Dictionary computed");
 
 %----to compute mat files
 batchToVisualWords();
+disp("Visual words computed");
 
 %imageHist=getImageFeatures(wordMap,150);
 
 %using SIFT
  buildRecognitionSystem();
  buildTestRecognitionSystem();
- sun_ahzqoumuvnpunhlb
-
+disp("Build recognition system done");
 
 %using KNN
 % conf=evaluateRecognitionSystem();
@@ -48,8 +49,13 @@ t = templateSVM('Standardize',1);
 %t = templateNaiveBayes('DistributionNames','kernel');
 %t=templateKNN('NumNeighbors',5,'Standardize',1)
 MDL=fitcecoc(train_features',train_labels,'Learners',t);
+
+disp("Training done");
+
 [predicted_labels,val]=predict(MDL, test_features');
 conf=confusionmat(test_labels,predicted_labels);
 disp(conf);
 accurracy=trace(conf)/sum(conf(:)) * 100;
 disp(accurracy);
+
+disp("prediction done");

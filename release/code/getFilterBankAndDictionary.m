@@ -11,7 +11,7 @@ function [filterBank, dictionary] = getFilterBankAndDictionary(imPaths)
 
     % TODO Implement your code here
     % h = waitbar(0,'1/2 process started, findind 3F filters');
-    T=length(imPaths);%total length of traning sets
+    T=length(imPaths);%total length of training sets
     alpha=150;%decding value of alpha
     clusters=200;
     filter_Responses=zeros(T,alpha,60);%stores the filter response on alpha pixels of T images
