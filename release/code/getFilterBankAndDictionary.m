@@ -8,11 +8,12 @@ function [filterBank, dictionary] = getFilterBankAndDictionary(imPaths)
 %   dictionary: a dictionary of visual words from the filter responses using k-means.
 
     filterBank  = createFilterBank();
-
     % TODO Implement your code here
     % h = waitbar(0,'1/2 process started, findind 3F filters');
     T=length(imPaths);%total length of traning sets
-    alpha=150;%decding value of alpha
+    % alpha=150;%decding value of alpha
+    % clusters=200;
+    alpha=1000;%decding value of alpha
     clusters=200;
     filter_Responses=zeros(T,alpha,60);%stores the filter response on alpha pixels of T images
     parfor_progress(T);

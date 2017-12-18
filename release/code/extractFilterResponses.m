@@ -19,14 +19,19 @@ img=img/255;
  img=RGB2Lab(img);%converting the RGB colorspace into Lab format
 %img=rgb2hsv(img);%using hsv
 [filterCount,r]=size(filterBank);%getting size of the total filters
-filterResponses=zeros(M,N,3*filterCount);%creating an zero array of size MxNx3filterCount
+% filterResponses=zeros(M,N,3*filterCount);%creating an zero array of size MxNx3filterCount
+filterResponses=[];%creating an zero array of size MxNx3filterCount
+
 count=1;
-for i = 1:3:3*filterCount-2
+% for i = 1:3:3*filterCount-2
+for i = 1:filterCount
 	% filterResponses(:,:,i)=imfilter(img, filterBank{i});
-	filterResponses(:,:,i)=imfilter(img(:,:,1), filterBank{count});%applying same filter on all three channels
-	filterResponses(:,:,i+1)=imfilter(img(:,:,2), filterBank{count});
-	filterResponses(:,:,i+2)=imfilter(img(:,:,3), filterBank{count});
+	filterResponses =  cat(3,filterResponses, imfilter(img, filterBank{i} ));
+	% filterResponses(:,:,i)=imfilter(img(:,:,1), filterBank{count});%applying same filter on all three channels
+	% filterResponses(:,:,i+1)=imfilter(img(:,:,2), filterBank{count});
+	% filterResponses(:,:,i+2)=imfilter(img(:,:,3), filterBank{count});
 	count=count+1;
 end
+% size(filterResponses)
 
 end

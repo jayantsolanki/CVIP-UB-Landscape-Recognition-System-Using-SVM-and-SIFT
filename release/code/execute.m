@@ -11,4 +11,7 @@
 %[filterBank,dictionary]=getFilterBankandDictionary(all_imagenames);
 computeDictionary
 delete(gcp('nocreate'))
-batchToVisualWords(3)
+batchToVisualWords(4)
+delete(gcp('nocreate'))
+buildRecognitionSystem
+evaluateRecognitionSystem
