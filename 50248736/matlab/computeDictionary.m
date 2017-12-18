@@ -12,6 +12,6 @@ function computeDictionary()
     [dictionary]=getSIFTandDictionary1(strcat(['../data/'],train_imagenames));
    % filterBank=createFilterBank();
      %[filterBank,dictionary] = getFilterBankAndDictionary(strcat(['../data/'],test_imagenames));
-	save('SIFTdictionaryTestK180.mat','dictionary'); 
+	save('SIFTdictionaryA500K200.mat','dictionary'); 
 
 end

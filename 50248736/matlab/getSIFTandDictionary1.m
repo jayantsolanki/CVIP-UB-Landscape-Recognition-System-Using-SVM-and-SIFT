@@ -11,6 +11,7 @@ function [dictionary] = getSIFTandDictionary1(imPaths)
    % filterResponses=cell(1,numel(length(imPaths)));
    % filterResponses=[];
     a=150;
+
     K=200;
     sampledData=[];
     % TODO Implement your code here
@@ -22,27 +23,27 @@ function [dictionary] = getSIFTandDictionary1(imPaths)
            img=repmat(img,[1,1,3]);
        end
     
-       img_new=imresize(img,[28 28]);
+%        img_new=imresize(img,[28 28]);
         %[loc,siftFeatures]= vl_dsift(single(imgray));%,'color','rgb');
-        [loc,siftFeatures]=vl_phow(single(img_new), 'step', 3, 'sizes', 8,'color','hsv');
+        [loc,siftFeatures]=vl_phow(single(img), 'step', 3, 'sizes', 8,'color','hsv');
         %loc=loc';
           
        siftFeatures=siftFeatures';
        
-%         [x,y]=size(siftFeatures);
-%        randPix=randperm(x,a);
-%         [h w]=size(randPix); 
-%         randArray=siftFeatures(randPix,:);
+        [x,y]=size(siftFeatures);
+       randPix=randperm(x,a);
+        [h w]=size(randPix); 
+        randArray=siftFeatures(randPix,:);
 %         disp(size(siftFeatures));
 %         disp(size(randArray));
         
         
-        %randArray=randPerm(filterImage,a);
-        %sampledData=[sampledData,randArray];
-        %disp(size(sampledData));
-       % sampledData=cat(1,sampledData,randArray);
+%         randArray=randPerm(filterImage,a);
+%         sampledData=[sampledData,randArray];
+%         disp(size(sampledData));
+        sampledData=cat(1,sampledData,randArray);
        
-       sampledData=cat(1,sampledData,siftFeatures);
+%        sampledData=cat(1,sampledData,siftFeatures);
    end    
      
    % dictionary= kmeans(sampledData, K, EmptyAction,drop);
