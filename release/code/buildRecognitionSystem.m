@@ -6,7 +6,7 @@ function buildRecognitionSystem()
 	warning('off','all');%warning suppress
 
 	% TODO create train_features
-	filterBank = filterBank;
+	% filterBank = filterBank;
 	dictionary = dictionary;
 	source = '../data/';
 	[~,dictionarySize]=size(dictionary);
@@ -24,6 +24,6 @@ function buildRecognitionSystem()
 	end
 	close(h);
 
-	save('vision.mat', 'filterBank', 'dictionary', 'train_features', 'train_labels');
+	save('vision.mat', 'dictionary', 'train_features', 'train_labels');
 
 end

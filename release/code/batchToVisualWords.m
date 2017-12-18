@@ -23,7 +23,7 @@ parpool('local',numCores);
 
 %load the files and texton dictionary
 load('../data/traintest.mat','all_imagenames','mapping');
-load('dictionary.mat','filterBank','dictionary');
+load('dictionary.mat','dictionary');
 
 source = '../data/';
 target = '../data/'; 
@@ -40,7 +40,7 @@ end
 
 %This is a peculiarity of loading inside of a function with parfor. We need to 
 %tell MATLAB that these variables exist and should be passed to worker pools.
-filterBank = filterBank;
+% filterBank = filterBank;
 dictionary = dictionary;
 
 %matlab can't save/load inside parfor; accumulate
@@ -52,7 +52,7 @@ parfor_progress(l);%parallel progress
 parfor i=1:l
     fprintf('Converting to visual words %s\n', all_imagenames{i});
     image = imread([source, all_imagenames{i}]);
-    wordRepresentation{i} = getVisualWords(image, filterBank, dictionary);
+    wordRepresentation{i} = getVisualWords(image, dictionary);
     parfor_progress;
 end
 parfor_progress(0);

@@ -16,9 +16,9 @@ computeDictionary();
 disp("Dictionary computed");
 
 %----to compute mat files
-batchToVisualWords();
+batchToVisualWords(4);
 disp("Visual words computed");
-
+delete(gcp('nocreate'))
 %imageHist=getImageFeatures(wordMap,150);
 
 %using SIFT

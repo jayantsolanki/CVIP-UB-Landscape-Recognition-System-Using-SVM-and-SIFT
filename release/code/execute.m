@@ -9,7 +9,7 @@
 
 %load('../data/traintest.mat');
 %[filterBank,dictionary]=getFilterBankandDictionary(all_imagenames);
-% computeDictionary
+computeDictionary
 delete(gcp('nocreate'))
 batchToVisualWords(4)
 delete(gcp('nocreate'))
