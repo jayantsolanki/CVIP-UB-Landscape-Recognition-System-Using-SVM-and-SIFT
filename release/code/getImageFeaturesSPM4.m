@@ -1,4 +1,4 @@
-function [h] = getImageFeaturesSPM(layerNum, wordMap, dictionarySize)
+function [h] = getImageFeaturesSPM4(layerNum, wordMap, dictionarySize)
 % Compute histogram of visual words using SPM method
 % Inputs:
 %   layerNum: Number of layers (L+1)
@@ -9,6 +9,7 @@ function [h] = getImageFeaturesSPM(layerNum, wordMap, dictionarySize)
 
     % TODO Implement your code here
     %for layer 3, L=2 so
+    % layerNum = 4;
     [a,b]=size(wordMap);
     k=dictionarySize*((4^(layerNum)-1)/3); %dimension of the resultant histogram vector after the histogram vectors for each layer is calculated
     h=zeros(k,1);%creating the zero filled array of kx1 dimension
@@ -17,7 +18,24 @@ function [h] = getImageFeaturesSPM(layerNum, wordMap, dictionarySize)
     % figure
     count=1;
     % hi=0;
-    if layerNum==3
+    if layerNum==4
+
+        for i=1:8
+            for j=1:8
+                [histo,bins]=histcounts(wordMap((i-1)*height+1:i*height,(j-1)*width+1:j*width),dictionarySize);%spliting image and calculating the histogram of it
+                % imagesc(wordMap((i-1)*height+1:i*height,(j-1)*width+1:j*width));
+                % histo=histo/norm(histo,1);% we did this to normlise the data sets
+                % size(histo);
+                histo=histo';
+                h(dictionarySize*(count-1)+1:dictionarySize*count,1)=histo/2;%weighted
+                count=count+1;
+                
+                % pause
+            end
+        end
+
+        width=b/(2^(layerNum-2));
+        height=a/(2^(layerNum-2));
     	for i=1:4
     		for j=1:4
     			[histo,bins]=histcounts(wordMap((i-1)*height+1:i*height,(j-1)*width+1:j*width),dictionarySize);%spliting image and calculating the histogram of it
@@ -25,7 +43,7 @@ function [h] = getImageFeaturesSPM(layerNum, wordMap, dictionarySize)
 				% histo=histo/norm(histo,1);% we did this to normlise the data sets
 				% size(histo);
 				histo=histo';
-				h(dictionarySize*(count-1)+1:dictionarySize*count,1)=histo/2;%weighted
+				h(dictionarySize*(count-1)+1:dictionarySize*count,1)=histo/4;%weighted
 				count=count+1;
     			
     			% pause
@@ -40,8 +58,8 @@ function [h] = getImageFeaturesSPM(layerNum, wordMap, dictionarySize)
     	% h(dictionarySize*19+1:dictionarySize*20,1)=(h(dictionarySize*10+1:dictionarySize*11,1)+h(dictionarySize*11+1:dictionarySize*12,1)+h(dictionarySize*14+1:dictionarySize*15,1)+h(dictionarySize*15+1:dictionarySize*16,1))/2;
     	%for layer 0
     	% h(dictionarySize*20+1:dictionarySize*21,1)=histcounts(wordMap,dictionarySize)/4;
-    	width=b/(2^(layerNum-2));
-    	height=a/(2^(layerNum-2));
+    	width=b/(2^(layerNum-3));
+    	height=a/(2^(layerNum-3));
     	for i=1:2
     		for j=1:2
     			[histo,bins]=histcounts(wordMap((i-1)*height+1:i*height,(j-1)*width+1:j*width),dictionarySize);%spliting image and calculating the histogram of it
@@ -49,14 +67,15 @@ function [h] = getImageFeaturesSPM(layerNum, wordMap, dictionarySize)
 				% histo=histo/norm(histo,1);% we did this to normlise the data sets
 				% size(histo);
 				histo=histo';
-				h(dictionarySize*(count-1)+1:dictionarySize*count,1)=histo/4;%weighted
+				h(dictionarySize*(count-1)+1:dictionarySize*count,1)=histo/8;%weighted
 				count=count+1;
     			
     			% pause
     		end
     	end
-        h(dictionarySize*20+1:dictionarySize*21,1)=histcounts(wordMap,dictionarySize)/4;
+        h(dictionarySize*84+1:dictionarySize*85,1)=histcounts(wordMap,dictionarySize)/16;
     	h=h/norm(h,1);
+        size(h);
     end
     % hold
 

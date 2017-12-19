@@ -7,8 +7,7 @@ function [dictionary] = getSIFTandDictionary(imPaths)
 %   dictionary: a dictionary of visual words from the filter responses using k-means.
    % filterResponses=cell(1,numel(length(imPaths)));
    % filterResponses=[];
-    alpha=120;
-
+    alpha=150;
     K=200;
     T=length(imPaths);%total length of traning sets
   sampledData = zeros(T,alpha,384);%stores the filter response on alpha pixels of T images

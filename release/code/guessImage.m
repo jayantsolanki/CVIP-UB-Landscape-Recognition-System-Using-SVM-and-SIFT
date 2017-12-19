@@ -14,7 +14,7 @@ function guessedImage = guessImage( imagename )
 	% fprintf('[Getting Visual Words..]\n');
 	%wordMap = getVisualWords(image, filterBank, dictionary);
 	load(strrep(imagename,'.jpg','.mat'), 'wordMap');
-	guessedImage = getImageFeaturesSPM(3, wordMap, size(dictionary,2));
+	guessedImage = getImageFeaturesSPM4(4, wordMap, size(dictionary,2));
 	%h = getImageFeatures(wordMap, size(dictionary,2));%no SP
 	% distances = distanceToSet(h, train_features);
 	% [~,nnI] = max(distances);
