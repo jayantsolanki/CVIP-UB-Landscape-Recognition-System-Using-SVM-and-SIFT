@@ -10,7 +10,5 @@ Project report can be found at [report](https://github.com/jayantsolanki/CVIP-UB
 ## Folder Tree
 ***
 * [**docs**](https://github.com/jayantsolanki/CVIP-UB-Landscape-Recognition-System-Using-SVM-and-SIFT/tree/master/docs) contains documentation and paper
-* [**images**](https://github.com/jayantsolanki/CVIP-UB-Landscape-Recognition-System-Using-SVM-and-SIFT/tree/master/images)  contains the images of Uniiversity of Buffalo
 * [**release**](https://github.com/jayantsolanki/CVIP-UB-Landscape-Recognition-System-Using-SVM-and-SIFT/tree/master/release) contains implmentation codes and libraries
 * [**data**](https://github.com/jayantsolanki/CVIP-UB-Landscape-Recognition-System-Using-SVM-and-SIFT/tree/master/data) contains image data
-* [**data3**](https://github.com/jayantsolanki/CVIP-UB-Landscape-Recognition-System-Using-SVM-and-SIFT/tree/master/data3) contains image data
